@@ -21,8 +21,8 @@ public interface Oauth2Client {
     @PostMapping(path = "/oauth/token")
     Map<String,Object> postAccessToken(@RequestParam Map<String, String> parameters);
 
-    @DeleteMapping(path = "/remove_token")
-    void removeToken(@RequestParam("access_token") String access_token);
+    @DeleteMapping(path = "/logouting")
+    void removeToken(@RequestParam("token") String token);
 
 }
 

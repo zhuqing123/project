@@ -44,6 +44,3 @@ INSERT INTO `oauth_client_details` VALUES ('system', NULL, '$2a$10$QN9vg9iX3WFov
 COMMIT;
 
 SET FOREIGN_KEY_CHECKS = 1;
-
-insert  into `oauth_client_details` values ('webapp',NULL,'webapp','select,write','password,authorization_code,client_credentials,implicit,refresh_token',NULL,NULL,7200,72000,'后台管理系统',NULL);
-

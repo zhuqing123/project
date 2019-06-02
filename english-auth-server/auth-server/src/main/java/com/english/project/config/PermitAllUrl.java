@@ -16,7 +16,7 @@ public final class PermitAllUrl {
     public static final String[] ENDPOINTS = {
             "/druid/**", "/oauth/**",
             "/sys/login", "/swagger-ui.html","/v2/api-docs",
-            "/swagger-resources/**","/sysUser/register","/web/login"
+            "/swagger-resources/**","/sysUser/register","/web/login","/logouting"
     };
 
     /**
