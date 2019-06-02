@@ -10,6 +10,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.userdetails.User;
 import org.springframework.security.oauth2.common.OAuth2AccessToken;
 import org.springframework.security.oauth2.common.exceptions.InvalidGrantException;
 import org.springframework.security.oauth2.provider.endpoint.TokenEndpoint;
@@ -39,7 +40,7 @@ public class LoginController {
     private ConsumerTokenServices consumerTokenServices;
 
     private static final String CLIENT_ID     = "system";
-    private static final String CLIENT_SECRET = "app";
+    private static final String CLIENT_SECRET = "system";
     private static final String CLIENT_SCOPE  = "app";
 
     @PostMapping("/web/login")
@@ -54,10 +55,11 @@ public class LoginController {
                 put("password", password);
             }
         };
-       // Collection<GrantedAuthority> grantedAuthorities = new HashSet<>();
-        //Authentication authentication = new UsernamePasswordAuthenticationToken(CLIENT_ID, CLIENT_SECRET,grantedAuthorities);
+        Collection<GrantedAuthority> grantedAuthorities = new HashSet<>();
+        User user=new User(CLIENT_ID,CLIENT_SECRET,grantedAuthorities);
+        Authentication authentication = new UsernamePasswordAuthenticationToken(user, null, grantedAuthorities);
         try {
-            ResponseEntity<OAuth2AccessToken> oAuth2AccessTokenResponseEntity = this.tokenEndpoint.postAccessToken(null, parameters);
+            ResponseEntity<OAuth2AccessToken> oAuth2AccessTokenResponseEntity = this.tokenEndpoint.postAccessToken(authentication, parameters);
             return new ResultVo(ResultEnum.SUCCESS,oAuth2AccessTokenResponseEntity.getBody());
         } catch (InvalidGrantException e) {
             LOGGER.error("用户名密码错误",e);
