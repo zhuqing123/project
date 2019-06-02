@@ -1,0 +1,24 @@
+server:
+  port: 8761
+spring:
+  application:
+    name: eureka-server
+  security:
+    user:
+      name: eureka
+      password: eureka
+eureka:
+  instance:
+    hostname: 127.0.0.1
+    prefer-ip-address: true
+  client:
+# 默认是true，将自己注册到eureka上
+    register-with-eureka: false
+    fetch-registry: false
+    service-url:
+      defaultZone: http://${spring.security.user.name}:${spring.security.user.password}@${eureka.instance.hostname}:${server.port}/eureka/
+  server:
+# 关闭自我保护在生产环境中开启
+    enable-self-preservation: false
+# 清理服务时间
+    eviction-interval-timer-in-ms: 60000

@@ -1,0 +1,11 @@
+spring:
+  redis:
+    host: 127.0.0.1
+    port: 6379
+server:
+  port: 8763
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://eureka:eureka@127.0.0.1:8761/eureka/
