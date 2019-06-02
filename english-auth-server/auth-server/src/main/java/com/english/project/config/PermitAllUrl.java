@@ -1,4 +1,4 @@
-package com.english.project.utils;
+package com.english.project.config;
 
 import java.util.Collections;
 import java.util.HashSet;
@@ -16,7 +16,7 @@ public final class PermitAllUrl {
     public static final String[] ENDPOINTS = {
             "/druid/**", "/oauth/**",
             "/sys/login", "/swagger-ui.html","/v2/api-docs",
-            "/swagger-resources/**","/sysUser/register"
+            "/swagger-resources/**","/sysUser/register","/web/login"
     };
 
     /**

@@ -1,6 +1,6 @@
 package com.english.project.config.security;
 
-import com.english.project.utils.PermitAllUrl;
+import com.english.project.config.PermitAllUrl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

@@ -1,7 +1,7 @@
 package com.english.project.config.oauth2;
 
+import com.english.project.config.PermitAllUrl;
 import com.english.project.config.error.AuthExceptionEntryPoint;
-import com.english.project.utils.PermitAllUrl;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.oauth2.common.OAuth2AccessToken;
