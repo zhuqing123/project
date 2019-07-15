@@ -11,14 +11,18 @@ eureka:
   instance:
     hostname: 127.0.0.1
     prefer-ip-address: true
+    #  eureka server多久没有收到心跳，则表示对应的实例过期，单位：秒。
+    lease-expiration-duration-in-seconds: 90
+    lease-renewal-interval-in-seconds: 30
   client:
-# 默认是true，将自己注册到eureka上
+    # 默认是true，将自己注册到eureka上
     register-with-eureka: false
     fetch-registry: false
     service-url:
       defaultZone: http://${spring.security.user.name}:${spring.security.user.password}@${eureka.instance.hostname}:${server.port}/eureka/
+    registry-fetch-interval-seconds: 30
   server:
-# 关闭自我保护在生产环境中开启
+    # 关闭自我保护在生产环境中开启
     enable-self-preservation: false
-# 清理服务时间
-    eviction-interval-timer-in-ms: 60000
+    # 清理服务时间
+    eviction-interval-timer-in-ms: 10000

@@ -2,7 +2,7 @@ spring:
   profiles:
     active: test
   redis:
-    database: 0
+    database: 1
     jedis:
       pool:
         max-idle: 8 # 连接池中的最小空闲连接
@@ -18,20 +18,27 @@ spring:
   cloud:
     gateway:
       routes:
-      - id: route_service_one
-        uri: lb://auth-server
-        predicates:
-        - Path=/auth/server/**
-        filters:
-        - StripPrefix=2
-        - AddResponseHeader=X-Response-Default-Foo, Default-Bar
-      - id: route_service_two
-        uri: lb://base-server
-        predicates:
-        - Path=/base/server/**
-        filters:
-        - StripPrefix=2
-        - AddResponseHeader=X-Response-Default-Foo, Default-Bar
+        - id: route_service_one
+          uri: lb://auth-server
+          predicates:
+            - Path=/auth/server/**
+          filters:
+            - StripPrefix=2
+            - AddResponseHeader=X-Response-Default-Foo, Default-Bar
+        - id: route_service_two
+          uri: lb://base-server
+          predicates:
+            - Path=/base/server/**
+          filters:
+            - StripPrefix=2
+            - AddResponseHeader=X-Response-Default-Foo, Default-Bar
+        - id: route_service_two
+          uri: lb://message-server
+          predicates:
+            - Path=/message/server/**
+          filters:
+            - StripPrefix=2
+            - AddResponseHeader=X-Response-Default-Foo, Default-Bar
 hystrix:
   command:
     fallbackcmd:
@@ -48,5 +55,5 @@ feign:
         connectTimeout: 1000
         readTimeout: 12000
 eureka:
-    instance:
-      prefer-ip-address: true
+  instance:
+    prefer-ip-address: true

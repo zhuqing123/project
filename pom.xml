@@ -11,17 +11,18 @@
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
 
-    <groupId>com.english.project</groupId>
+    <groupId>com.sxlc.project</groupId>
     <artifactId>project</artifactId>
     <packaging>pom</packaging>
     <version>1.0-SNAPSHOT</version>
     <modules>
-        <module>english-auth-server</module>
+        <module>sxlc-auth-server</module>
         <module>common</module>
         <module>eureka-server</module>
         <module>gateway-server</module>
         <module>config</module>
-        <module>english-base-server</module>
+        <module>sxlc-base-server</module>
+        <module>sxlc-message-server</module>
     </modules>
     <properties>
         <java.version>1.8</java.version>
@@ -33,9 +34,9 @@
         <config-version>1.0-SNAPSHOT</config-version>
         <fastjson-version>1.2.51</fastjson-version>
         <swagger-version>2.7.0</swagger-version>
-        <auth-remote-version>1.0-SNAPSHOT</auth-remote-version>
-        <base-remote-version>1.0-SNAPSHOT</base-remote-version>
         <auth-common-verison>1.0-SNAPSHOT</auth-common-verison>
+        <message-common-verison>1.0-SNAPSHOT</message-common-verison>
+        <netty-version>4.1.36.Final</netty-version>
     </properties>
 
     <dependencies>
@@ -81,29 +82,29 @@
                 <version>${lang3-version}</version>
             </dependency>
             <dependency>
-                <groupId>com.english.project</groupId>
+                <groupId>com.sxlc.project</groupId>
                 <artifactId>common</artifactId>
                 <version>${common-verison}</version>
             </dependency>
             <dependency>
-                <groupId>com.english.project</groupId>
+                <groupId>com.sxlc.project</groupId>
                 <artifactId>config</artifactId>
                 <version>${config-version}</version>
             </dependency>
             <dependency>
-                <groupId>com.english.project</groupId>
-                <artifactId>auth-remote</artifactId>
-                <version>${auth-remote-version}</version>
-            </dependency>
-            <dependency>
-                <groupId>com.english.project</groupId>
-                <artifactId>base-remote</artifactId>
-                <version>${base-remote-version}</version>
-            </dependency>
-            <dependency>
-                <groupId>com.english.project</groupId>
+                <groupId>com.sxlc.project</groupId>
                 <artifactId>auth-common</artifactId>
                 <version>${auth-common-verison}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.sxlc.project</groupId>
+                <artifactId>message-common</artifactId>
+                <version>${message-common-verison}</version>
+            </dependency>
+            <dependency>
+                <groupId>io.netty</groupId>
+                <artifactId>netty-all</artifactId>
+                <version>${netty-version}}</version>
             </dependency>
         </dependencies>
     </dependencyManagement>
